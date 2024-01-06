@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34302.85
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "api-catalogo-personagens", "api-catalogo-personagens.csproj", "{BCE881A0-3FBB-422D-BB2D-7757C7A81750}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BCE881A0-3FBB-422D-BB2D-7757C7A81750}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCE881A0-3FBB-422D-BB2D-7757C7A81750}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCE881A0-3FBB-422D-BB2D-7757C7A81750}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCE881A0-3FBB-422D-BB2D-7757C7A81750}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {26DBF097-F206-4C40-91AC-0ECA09A2C4D1}
+	EndGlobalSection
+EndGlobal
