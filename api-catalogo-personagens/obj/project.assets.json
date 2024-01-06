@@ -114,6 +114,70 @@
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
+      },
+      "Dominio/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "Interfaces": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Dominio.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Dominio.dll": {}
+        }
+      },
+      "Interfaces/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "Models": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Interfaces.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Interfaces.dll": {}
+        }
+      },
+      "IoC/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "Dominio": "1.0.0",
+          "Interfaces": "1.0.0",
+          "Repositorio": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/IoC.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/IoC.dll": {}
+        }
+      },
+      "Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Models.dll": {}
+        }
+      },
+      "Repositorio/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "Interfaces": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Repositorio.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Repositorio.dll": {}
+        }
       }
     }
   },
@@ -548,10 +612,36 @@
         "swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512",
         "swashbuckle.aspnetcore.swaggerui.nuspec"
       ]
+    },
+    "Dominio/1.0.0": {
+      "type": "project",
+      "path": "../Dominio/Dominio.csproj",
+      "msbuildProject": "../Dominio/Dominio.csproj"
+    },
+    "Interfaces/1.0.0": {
+      "type": "project",
+      "path": "../Interfaces/Interfaces.csproj",
+      "msbuildProject": "../Interfaces/Interfaces.csproj"
+    },
+    "IoC/1.0.0": {
+      "type": "project",
+      "path": "../IoC/IoC.csproj",
+      "msbuildProject": "../IoC/IoC.csproj"
+    },
+    "Models/1.0.0": {
+      "type": "project",
+      "path": "../Models/Models.csproj",
+      "msbuildProject": "../Models/Models.csproj"
+    },
+    "Repositorio/1.0.0": {
+      "type": "project",
+      "path": "../Repositorio/Repositorio.csproj",
+      "msbuildProject": "../Repositorio/Repositorio.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
+      "IoC >= 1.0.0",
       "Microsoft.AspNetCore.OpenApi >= 7.0.14",
       "Microsoft.VisualStudio.Azure.Containers.Tools.Targets >= 1.19.4",
       "Swashbuckle.AspNetCore >= 6.5.0"
@@ -565,11 +655,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projetos\\__pessoal\\__poc\\api-catalogo-personagens\\api-catalogo-personagens.csproj",
-      "projectName": "api-catalogo-personagens",
-      "projectPath": "D:\\Projetos\\__pessoal\\__poc\\api-catalogo-personagens\\api-catalogo-personagens.csproj",
+      "projectUniqueName": "D:\\Projetos\\__pessoal\\__poc\\projeto-catalogo-personagens\\api-catalogo-personagens\\CamadaApresentacao.csproj",
+      "projectName": "CamadaApresentacao",
+      "projectPath": "D:\\Projetos\\__pessoal\\__poc\\projeto-catalogo-personagens\\api-catalogo-personagens\\CamadaApresentacao.csproj",
       "packagesPath": "C:\\Users\\Mateus\\.nuget\\packages\\",
-      "outputPath": "D:\\Projetos\\__pessoal\\__poc\\api-catalogo-personagens\\obj\\",
+      "outputPath": "D:\\Projetos\\__pessoal\\__poc\\projeto-catalogo-personagens\\api-catalogo-personagens\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -590,7 +680,11 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Projetos\\__pessoal\\__poc\\projeto-catalogo-personagens\\IoC\\IoC.csproj": {
+              "projectPath": "D:\\Projetos\\__pessoal\\__poc\\projeto-catalogo-personagens\\IoC\\IoC.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
