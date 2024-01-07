@@ -13,7 +13,6 @@ public class SegurancaController : ControllerBase
 {
     private readonly IConfiguration _configuracao;
 
-
     public SegurancaController(IConfiguration configuracao)
     {
         _configuracao = configuracao;

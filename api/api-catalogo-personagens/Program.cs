@@ -1,3 +1,4 @@
+using IoC;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Options;
@@ -22,7 +23,9 @@ public class Program
         _configuraSwagger(servicos);
         // JWT TOKEN
         _ConfiguraAutenticacaoJWT(servicos, gerenciadorConfiguracoes);
-
+        
+        // Injeção dos serviços da aplicação
+        servicos.RegistrarServicos();
 
         var app = builder.Build();
 
