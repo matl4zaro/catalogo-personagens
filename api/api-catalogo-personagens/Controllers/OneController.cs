@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace api_catalogo_personagens.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize]
     public class OneController : ControllerBase
     {
         private readonly ILogger<OneController> _logger;
