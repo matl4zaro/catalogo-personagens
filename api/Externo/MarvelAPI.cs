@@ -27,11 +27,6 @@ public class MarvelAPI : IMarvelAPI
         _httpClientFactory = httpClientFactory;
     }
 
-    public string ChavePublica()
-    {
-        return ChaveAutenticacao();
-    }
-
     public string ChaveAutenticacao()
     {
         MarvelCredenciais credenciaisMarvelAPI = new();
@@ -52,23 +47,46 @@ public class MarvelAPI : IMarvelAPI
         return chaveAutenticacao;
     }
 
-    public async Task<CharacterDataWrapper> ObterPersonagens()
+    public async Task<CharacterDataWrapper?> ObterPersonagens(int quantidadeResultados, int pagina)
     {
-        var client = _httpClientFactory.CreateClient();
+        // satinização
+        pagina = (pagina < 1) ? 1 : pagina;
+        quantidadeResultados = (quantidadeResultados < 1) ? 10 : quantidadeResultados;
+        int offset = (pagina - 1) * quantidadeResultados;
 
-        client.BaseAddress = new Uri("https://gateway.marvel.com");
-        var terms = $"/v1/public/characters?limit=10&{ChaveAutenticacao()}";
+        HttpClient client = _httpClientFactory.CreateClient("marvel-api");
+
+        string terms = $"characters?limit={quantidadeResultados}&offset={offset}&{ChaveAutenticacao()}";
+
         try
         {
-            var content = await client.GetFromJsonAsync<CharacterDataWrapper>(terms);
+            CharacterDataWrapper? content = await client.GetFromJsonAsync<CharacterDataWrapper>(terms);
+
             return content;
-
         }
-        catch (Exception ex)
+        catch (Exception)
         {
-
-            throw ex;
+            throw ;
         }
 
+        /*
+         
+            GERAR MODELS
+            CRIAR O DapperContexto
+            CONFIGURAR O BANCO 
+
+            CONCLUIR O ENDPOINT DE OBTENÇÃO DE DADOS
+            CONCLUIR O ENDPOINT DE OBTENÇÃO DE PERSONAGEM POR ID ESPECÍFICO
+         
+
+            GET /v1/public/characters - OK, ENDPOINT PARA SER USADO INTERNO MONTAR FLUXO DE SINCRONIZAÇÃO DE DADOS
+
+            GET /v1/public/characters/{characterId}
+
+            GET /v1/public/characters/{characterId}/comics
+            GET /v1/public/characters/{characterId}/events
+            GET /v1/public/characters/{characterId}/series
+            GET /v1/public/characters/{characterId}/stories
+         */
     }
 }

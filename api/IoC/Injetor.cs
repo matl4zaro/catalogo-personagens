@@ -23,7 +23,11 @@ public static class Injetor
 
     private static void _Externo(this IServiceCollection colecaoServicos)
     {
-        colecaoServicos.AddHttpClient();
+        colecaoServicos.AddHttpClient("marvel-api", (serviceProvider, httpClient) =>
+        {
+            httpClient.BaseAddress = new Uri("https://gateway.marvel.com/v1/public/");
+        });
+
         colecaoServicos.AddScoped<IMarvelAPI, MarvelAPI>();
     }
 }

@@ -23,10 +23,10 @@ public class OneController : ControllerBase
     }
 
     [HttpGet(Name = "Teste")]
-    public IActionResult Get()
+    public IActionResult Get(int quantidade, int pagina)
     {
 
-        var a = _configuracao.ObterPersonagens();
+        var a = _configuracao.ObterPersonagens(quantidade, pagina);
 
 
         return Ok(new { a.Result });

@@ -9,6 +9,5 @@ namespace Interfaces.Externo;
 
 public interface IMarvelAPI
 {
-    string ChavePublica();
-    Task<CharacterDataWrapper> ObterPersonagens();
+    Task<CharacterDataWrapper?> ObterPersonagens(int quantidade, int pagina);
 }
