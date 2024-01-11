@@ -26,10 +26,10 @@ public class OneController : ControllerBase
     public IActionResult Get()
     {
 
-        string a = _configuracao.ChavePublica();
+        var a = _configuracao.ObterPersonagens();
 
 
-        return Ok(new { a });
+        return Ok(new { a.Result });
     }
 }
 

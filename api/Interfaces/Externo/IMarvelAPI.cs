@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Models.MarvelAPI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,4 +10,5 @@ namespace Interfaces.Externo;
 public interface IMarvelAPI
 {
     string ChavePublica();
+    Task<CharacterDataWrapper> ObterPersonagens();
 }

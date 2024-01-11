@@ -23,6 +23,7 @@ public static class Injetor
 
     private static void _Externo(this IServiceCollection colecaoServicos)
     {
+        colecaoServicos.AddHttpClient();
         colecaoServicos.AddScoped<IMarvelAPI, MarvelAPI>();
     }
 }
