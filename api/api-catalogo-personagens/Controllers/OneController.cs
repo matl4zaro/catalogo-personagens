@@ -1,7 +1,6 @@
 using Interfaces.Externo;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
 
 namespace api_catalogo_personagens.Controllers;
 

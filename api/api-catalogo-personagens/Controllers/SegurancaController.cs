@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -46,22 +45,22 @@ public class SegurancaController : ControllerBase
 
     private string _GerarTokenJwt()
     {
-        ConfiguracaoToken configuracaoToken = new ();
+        ConfiguracaoToken configuracaoToken = new();
         new ConfigureFromConfigurationOptions<ConfiguracaoToken>(_configuracao.GetSection("JWT")).Configure(configuracaoToken);
 
         byte[] chaveEmBytes = Encoding.UTF8.GetBytes(configuracaoToken.Key);
-        SymmetricSecurityKey securityKey = new (chaveEmBytes);
-        
-        string algoritmo = SecurityAlgorithms.HmacSha256;
-        SigningCredentials credentials = new (securityKey, algoritmo);
+        SymmetricSecurityKey securityKey = new(chaveEmBytes);
 
-        JwtSecurityToken jwtToken = new (
+        string algoritmo = SecurityAlgorithms.HmacSha256;
+        SigningCredentials credentials = new(securityKey, algoritmo);
+
+        JwtSecurityToken jwtToken = new(
             issuer: configuracaoToken.Issuer,
             audience: configuracaoToken.Audience,
             expires: DateTime.Now.AddMinutes(configuracaoToken.Expires),
             signingCredentials: credentials
         );
-        JwtSecurityTokenHandler manipuladorToken = new ();
+        JwtSecurityTokenHandler manipuladorToken = new();
         string tokenEmString = manipuladorToken.WriteToken(jwtToken);
 
         return tokenEmString;

@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 public class Program
@@ -19,11 +18,11 @@ public class Program
 
         servicos.AddControllers();
         servicos.AddEndpointsApiExplorer();
-        
+
         _configuraSwagger(servicos);
         // JWT TOKEN
         _ConfiguraAutenticacaoJWT(servicos, gerenciadorConfiguracoes);
-        
+
         // Injeção dos serviços da aplicação
         servicos.RegistrarServicos();
 
@@ -129,7 +128,7 @@ public class Program
 }
 
 // TODO: passar para model de segurança
-public class ConfiguracaoToken 
+public class ConfiguracaoToken
 {
     public string Key { get; set; } = "";
     public string Issuer { get; set; } = "";

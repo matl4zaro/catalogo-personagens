@@ -3,13 +3,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using Models.MarvelAPI;
 using Models.MarvelAPI.Credenciais;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http.Json;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Externo;
 
@@ -33,7 +29,7 @@ public class MarvelAPI : IMarvelAPI
         new ConfigureFromConfigurationOptions<MarvelCredenciais>(_configuracao.GetSection("MarvelAPI")).Configure(credenciaisMarvelAPI);
 
         string timeStamp = (DateTime.Now).Ticks.ToString();
-        string apiKey = credenciaisMarvelAPI.PublicKey ;
+        string apiKey = credenciaisMarvelAPI.PublicKey;
 
         string hash;
         using (MD5 md5 = MD5.Create())
@@ -66,7 +62,7 @@ public class MarvelAPI : IMarvelAPI
         }
         catch (Exception)
         {
-            throw ;
+            throw;
         }
 
         /*
