@@ -38,7 +38,6 @@ public class MarvelAPI : IMarvelAPI
             hash = string.Join(string.Empty, md5.ComputeHash(Encoding.UTF8.GetBytes(toHash)).Select(b => b.ToString("x2")));
         }
 
-        //string chaveAutenticacao = $"ts={timeStamp}&apikey={apiKey}&hash={BitConverter.ToString(hashBytes).Replace("-", "").ToLower()}";
         string chaveAutenticacao = $"ts={timeStamp}&apikey={apiKey}&hash={hash}";
         return chaveAutenticacao;
     }
@@ -71,7 +70,7 @@ public class MarvelAPI : IMarvelAPI
             (ok) CRIAR O DapperContexto
             (ok) CONFIGURAR O BANCO 
 
-            Testar se banco funciona, inserindo e buscando dados
+            (OK) Testar se banco funciona, inserindo e buscando dados
 
             CONCLUIR O ENDPOINT DE OBTENÇÃO DE DADOS
             CONCLUIR O ENDPOINT DE OBTENÇÃO DE PERSONAGEM POR ID ESPECÍFICO

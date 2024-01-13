@@ -1,3 +1,4 @@
+using Interfaces.Dominio;
 using Interfaces.Externo;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -9,26 +10,25 @@ namespace api_catalogo_personagens.Controllers;
 [Authorize]
 public class OneController : ControllerBase
 {
-    private readonly IMarvelAPI _configuracao;
-    private readonly ILogger<OneController> _logger;
+    private readonly IAtualizacaoServico _atualizacaoServico;
 
-    public OneController(
-        ILogger<OneController> logger,
-        IMarvelAPI configuracao
-    )
+    public OneController(IAtualizacaoServico atualizacaoServico)
     {
-        _configuracao = configuracao;
-        _logger = logger;
+        _atualizacaoServico = atualizacaoServico;
     }
 
-    [HttpGet(Name = "Teste")]
-    public IActionResult Get(int quantidade, int pagina)
+    [HttpGet("SincronizarTodos")]
+    public async Task<IActionResult> Get()
     {
-
-        var a = _configuracao.ObterPersonagens(quantidade, pagina);
-
-
-        return Ok(new { a.Result });
+        try
+        {
+            await _atualizacaoServico.AdicionaPersonagens();
+            return Ok();
+        }
+        catch (Exception ex)
+        {
+            return Problem(ex.Message);
+        }                
     }
 }
 
