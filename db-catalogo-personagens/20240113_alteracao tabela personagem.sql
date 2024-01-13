@@ -1,0 +1,1 @@
+ALTER TABLE Personagem ALTER COLUMN Descricao VARCHAR(MAX)
