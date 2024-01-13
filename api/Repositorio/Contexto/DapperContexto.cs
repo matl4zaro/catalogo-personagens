@@ -1,10 +1,11 @@
 ﻿using Dapper.Contrib.Extensions;
+using Interfaces.Repositorio;
 using Microsoft.Extensions.Configuration;
 using Repositorio.Compartilhado;
 
 namespace Repositorio.Contexto;
 
-public class DapperContexto : SqlConnectionFactory
+public class DapperContexto : SqlConnectionFactory, IDapperContexto
 {
     public DapperContexto(IConfiguration configuration) : base(configuration)
     {

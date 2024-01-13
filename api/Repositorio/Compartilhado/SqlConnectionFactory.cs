@@ -15,6 +15,7 @@ public class SqlConnectionFactory : ISqlConnectionFactory
 
     public SqlConnection CreateConnection()
     {
-        return new SqlConnection(_configuration.GetConnectionString("ProjetoMarvelDB"));
+        string connectionString = _configuration.GetConnectionString("ProjetoMarvelDB") ?? "";
+        return new SqlConnection(connectionString);
     }
 }

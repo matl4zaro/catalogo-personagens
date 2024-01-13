@@ -12,7 +12,6 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
-        // Add services to the container.
         var servicos = builder.Services;
         var gerenciadorConfiguracoes = builder.Configuration;
 
@@ -20,15 +19,11 @@ public class Program
         servicos.AddEndpointsApiExplorer();
 
         _configuraSwagger(servicos);
-        // JWT TOKEN
         _ConfiguraAutenticacaoJWT(servicos, gerenciadorConfiguracoes);
-
-        // Injeção dos serviços da aplicação
         servicos.RegistrarServicos();
 
         var app = builder.Build();
 
-        // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
         {
             app.UseSwagger();
@@ -39,11 +34,8 @@ public class Program
         }
 
         app.UseHttpsRedirection();
-
         app.UseAuthorization();
-
         app.MapControllers();
-
         app.Run();
     }
 

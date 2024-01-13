@@ -67,9 +67,11 @@ public class MarvelAPI : IMarvelAPI
 
         /*
          
-            GERAR MODELS
-            CRIAR O DapperContexto
-            CONFIGURAR O BANCO 
+            (ok) GERAR MODELS
+            (ok) CRIAR O DapperContexto
+            (ok) CONFIGURAR O BANCO 
+
+            Testar se banco funciona, inserindo e buscando dados
 
             CONCLUIR O ENDPOINT DE OBTENÇÃO DE DADOS
             CONCLUIR O ENDPOINT DE OBTENÇÃO DE PERSONAGEM POR ID ESPECÍFICO
