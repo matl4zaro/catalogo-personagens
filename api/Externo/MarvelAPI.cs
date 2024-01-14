@@ -72,9 +72,9 @@ public class MarvelAPI : IMarvelAPI
 
             (OK) Testar se banco funciona, inserindo e buscando dados
 
-            CONCLUIR O ENDPOINT DE OBTENÇÃO DE DADOS
+            (ok) CONCLUIR O ENDPOINT DE OBTENÇÃO DE DADOS
             CONCLUIR O ENDPOINT DE OBTENÇÃO DE PERSONAGEM POR ID ESPECÍFICO
-         
+            futuramente evoluir essa funcionalidade para ser uma sincronização de fato
 
             GET /v1/public/characters - OK, ENDPOINT PARA SER USADO INTERNO MONTAR FLUXO DE SINCRONIZAÇÃO DE DADOS
 

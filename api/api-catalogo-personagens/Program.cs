@@ -17,6 +17,16 @@ public class Program
 
         servicos.AddControllers();
         servicos.AddEndpointsApiExplorer();
+        servicos.AddCors(opt =>
+        {
+            opt.AddPolicy(
+                name: "PoliticaLocal", 
+                policy => policy
+                    .WithOrigins("http://localhost:4200")
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+            );
+        });
 
         _configuraSwagger(servicos);
         _ConfiguraAutenticacaoJWT(servicos, gerenciadorConfiguracoes);
@@ -32,7 +42,7 @@ public class Program
                 c.EnablePersistAuthorization();
             });
         }
-
+        app.UseCors("PoliticaLocal");
         app.UseHttpsRedirection();
         app.UseAuthorization();
         app.MapControllers();
