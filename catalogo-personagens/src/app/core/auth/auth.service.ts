@@ -1,11 +1,16 @@
 import { Injectable } from '@angular/core';
+import { HttpService } from '../http/http.service';
+import { UsuarioLogado, UsuarioLogin } from 'src/app/shared/models/usuario';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
-export class AuthService {
+export class AuthService extends HttpService {
   
   logado: boolean = false;
   
-  constructor() { }
+  constructor(private _httpClient: HttpClient) {
+    super(_httpClient);
+  }
   
   public verificarLogin() : boolean {
     this.logado = this._verificaValidadeToken(this._obterJWT());
@@ -17,8 +22,9 @@ export class AuthService {
     this.logado = false;
   }
 
-  public login(usuario:string, senha:string) : void {
-    
+  public login(credenciais: UsuarioLogin) : void {
+    this.post<UsuarioLogin, UsuarioLogado>('api/seguranca/login', credenciais).subscribe(data => console.log(data));
+    this.logado = true;
   }
 
   private _armazenaJWT() : void {
@@ -50,6 +56,9 @@ export class AuthService {
   }
 
   private _verificaValidadeToken(token: string): boolean {
+    if(token == "")
+      return false;
+    
     let tokenDecodificado = this._decodificarJWT(token);
     const expiracao = new Date((tokenDecodificado.exp) * 1000);
     const agora = new Date();

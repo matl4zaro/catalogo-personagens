@@ -1,8 +1,10 @@
 import { Observable, catchError, throwError as observableThrowError } from 'rxjs';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { Injectable } from '@angular/core';
 
-export abstract class HttpService {
+@Injectable()
+export class HttpService {
   private URL_API: string = environment.URL_API;
   constructor(private http: HttpClient) { }
 
