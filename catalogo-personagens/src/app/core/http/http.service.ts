@@ -19,7 +19,7 @@ export class HttpService {
     }
     return observableThrowError(() => errMsg);
   }
-  public post<TEntrada,TRetorno>(endpoint: string, corpo: TEntrada): Observable<TRetorno> {
+  protected post<TEntrada,TRetorno>(endpoint: string, corpo: TEntrada): Observable<TRetorno> {
     return this.http
       .post<TRetorno>(this.URL_API + endpoint, corpo)
       .pipe(catchError(
@@ -27,8 +27,16 @@ export class HttpService {
       ));
   }
   
-  public get<T>(endpoint: string, parametros? : Map<string, string>): Observable<T> {
-    const parametrosEmString = parametrosStringfy();
+  protected get<T>(endpoint: string, parametros? : Map<string, string>): Observable<T> {
+    let parametrosEmLista : string[] = ['?'];
+    parametros?.forEach((value, key) => {
+      parametrosEmLista.push(`${key}=${value}`);
+    });
+
+    const parametrosEmString = parametros ?
+    parametrosEmLista.join('&') :
+    '';
+
     return this.http
       .get<T>(this.URL_API + endpoint + parametrosEmString)
       .pipe(
@@ -36,18 +44,9 @@ export class HttpService {
           (error: Error) => observableThrowError(() => error)
         )
       );
-
-    function parametrosStringfy() {
-      return parametros ?
-        '?' + (Object.keys(parametros)
-          .map(
-            key => `${key}=${parametros.get(key)}`
-          )).join('&') :
-        '';
-    }
   }
 
-  public delete(endpoint: string): Observable<boolean> {
+  protected delete(endpoint: string): Observable<boolean> {
     return this.http
       .delete<boolean>(this.URL_API + endpoint)
       .pipe(catchError(
@@ -55,7 +54,7 @@ export class HttpService {
       ));
   }
 
-  public update<T>(endpoint: string, corpo: T): Observable<boolean> {
+  protected update<T>(endpoint: string, corpo: T): Observable<boolean> {
     return this.http
       .put<boolean>(this.URL_API + endpoint, corpo)
       .pipe(catchError(

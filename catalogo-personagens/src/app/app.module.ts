@@ -16,6 +16,7 @@ import { LoginDialogComponent } from './shared/components/login-dialog/login-dia
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    CommonModule,
     // Angular Material
     MatDialogModule,
     MatButtonModule,

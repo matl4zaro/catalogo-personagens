@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { UsuarioLogin } from "../../models/usuario";
+import { UsuarioLogin } from "../../models/entidades/usuario";
 import { AuthService } from "src/app/core/auth/auth.service";
 import { MatDialogRef } from "@angular/material/dialog";
 

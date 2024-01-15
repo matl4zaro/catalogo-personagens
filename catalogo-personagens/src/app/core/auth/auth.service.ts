@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '../http/http.service';
-import { UsuarioLogado, UsuarioLogin } from 'src/app/shared/models/usuario';
+import { UsuarioLogado, UsuarioLogin } from 'src/app/shared/models/entidades/usuario';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subscription, catchError, pipe } from 'rxjs';
 
@@ -42,10 +42,6 @@ export class AuthService extends HttpService {
     localStorage.setItem('token', tokenJWT);
     this.loginSubscription?.unsubscribe();
   }
-  
-  // public obterToken() : string {
-  //   return this._obterJWT();
-  // }
 
   obterToken = () => this._obterJWT();
 

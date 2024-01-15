@@ -13,20 +13,6 @@ public class Personagem
     public string ThumbnailUrl { get; set; } = string.Empty;
     public DateTime SincronizadoEm { get; set; }
 
-    //public static List<Personagem> Conver(List<Character> listB)
-    //{
-    //    List<A> listA = new List<A>();
-
-    //    foreach (B itemB in listB)
-    //    {
-    //        // You may need to implement a conversion logic here
-    //        A itemA = ConvertBtoA(itemB);
-    //        listA.Add(itemA);
-    //    }
-
-    //    return listA;
-    //}
-
     public static explicit operator Personagem(Character c) => new Personagem()
     {
         Descricao = c.description,
