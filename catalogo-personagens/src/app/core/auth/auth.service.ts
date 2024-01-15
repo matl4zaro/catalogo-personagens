@@ -2,11 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpService } from '../http/http.service';
 import { UsuarioLogado, UsuarioLogin } from 'src/app/shared/models/usuario';
 import { HttpClient } from '@angular/common/http';
+import { Observable, Subscription, catchError, pipe } from 'rxjs';
 
 @Injectable()
 export class AuthService extends HttpService {
   
   logado: boolean = false;
+  loginSubscription?: Subscription;
   
   constructor(private _httpClient: HttpClient) {
     super(_httpClient);
@@ -22,13 +24,23 @@ export class AuthService extends HttpService {
     this.logado = false;
   }
 
-  public login(credenciais: UsuarioLogin) : void {
-    this.post<UsuarioLogin, UsuarioLogado>('api/seguranca/login', credenciais).subscribe(data => console.log(data));
-    this.logado = true;
+  public login(credenciais: UsuarioLogin) : Subscription {
+    this.loginSubscription = this.post<UsuarioLogin, UsuarioLogado>('api/seguranca/login', credenciais)
+    .subscribe(
+      {
+        next: data => {
+          this._armazenaJWT(data.token);
+          this.logado = true;
+        },
+        error: error => console.log(error)
+      });
+    
+    return this.loginSubscription;
   }
 
-  private _armazenaJWT() : void {
-    localStorage.setItem('token', '');
+  private _armazenaJWT(tokenJWT: string) : void {
+    localStorage.setItem('token', tokenJWT);
+    this.loginSubscription?.unsubscribe();
   }
   
   // public obterToken() : string {
@@ -67,3 +79,7 @@ export class AuthService extends HttpService {
     return valido;
   }
 }
+function observableThrowError(arg0: () => Error): any {
+  throw new Error('Function not implemented.');
+}
+

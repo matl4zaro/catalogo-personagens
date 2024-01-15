@@ -10,9 +10,6 @@ import { FormsModule } from '@angular/forms';
 @NgModule({
   imports: [
     HomeRoutes,
-    FormsModule,
-    MatInputModule,
-    MatFormFieldModule
   ],
   exports: [],
   declarations: [

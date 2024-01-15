@@ -86,4 +86,89 @@ public class MarvelAPI : IMarvelAPI
             GET /v1/public/characters/{characterId}/stories
          */
     }
+
+    public async Task<CharacterDataWrapper?> ObterPersonagemPorId(int personagemId)
+    {
+        HttpClient client = _httpClientFactory.CreateClient("marvel-api");
+        string terms = $"characters/{personagemId}?{ChaveAutenticacao()}";
+
+        try
+        {
+            CharacterDataWrapper? content = await client.GetFromJsonAsync<CharacterDataWrapper>(terms);
+
+            return content;
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+    }
+    
+    public async Task<CharacterDataWrapper?> ObterQuadrinhosPorPersonagemId(int personagemId)
+    {
+        HttpClient client = _httpClientFactory.CreateClient("marvel-api");
+        string terms = $"characters/{personagemId}/comics?{ChaveAutenticacao()}";
+
+        try
+        {
+            CharacterDataWrapper? content = await client.GetFromJsonAsync<CharacterDataWrapper>(terms);
+
+            return content;
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+    }
+
+    public async Task<CharacterDataWrapper?> ObterEventosPorPersonagemId(int personagemId)
+    {
+        HttpClient client = _httpClientFactory.CreateClient("marvel-api");
+        string terms = $"characters/{personagemId}/events?{ChaveAutenticacao()}";
+
+        try
+        {
+            CharacterDataWrapper? content = await client.GetFromJsonAsync<CharacterDataWrapper>(terms);
+
+            return content;
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+    }
+
+    public async Task<CharacterDataWrapper?> ObterSeriesPorPersonagemId(int personagemId)
+    {
+        HttpClient client = _httpClientFactory.CreateClient("marvel-api");
+        string terms = $"characters/{personagemId}/series?{ChaveAutenticacao()}";
+
+        try
+        {
+            CharacterDataWrapper? content = await client.GetFromJsonAsync<CharacterDataWrapper>(terms);
+
+            return content;
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+    }
+
+    public async Task<CharacterDataWrapper?> ObterEstoriasPorPersonagemId(int personagemId)
+    {
+        HttpClient client = _httpClientFactory.CreateClient("marvel-api");
+        string terms = $"characters/{personagemId}/stories?{ChaveAutenticacao()}";
+
+        try
+        {
+            CharacterDataWrapper? content = await client.GetFromJsonAsync<CharacterDataWrapper>(terms);
+
+            return content;
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+    }
 }

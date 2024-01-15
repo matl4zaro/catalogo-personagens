@@ -1,20 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/core/auth/auth.service';
-import { UsuarioLogin } from 'src/app/shared/models/usuario';
+import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { LoginDialogComponent } from 'src/app/shared/components/login-dialog/login-dialog.component';
 
 @Component({
   selector: 'home-inicial',
   templateUrl: 'inicial.component.html'
 })
 
-export class InicialComponent implements OnInit {
-  usuarioLogin: UsuarioLogin = { usuario: '', senha: '' };
-  constructor(private _auth: AuthService) { }
+export class InicialComponent {
+  constructor(public dialog: MatDialog) {}
 
-  ngOnInit() { }
+  openDialog() {
+    const dialogRef = this.dialog.open(LoginDialogComponent);
 
-  login() {
-
-    this._auth.login(this.usuarioLogin);
+    dialogRef
+      .afterClosed()
+      .subscribe(() => {});
   }
+
 }

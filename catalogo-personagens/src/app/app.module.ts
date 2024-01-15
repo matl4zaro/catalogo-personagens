@@ -10,15 +10,32 @@ import { HttpHeadersInterceptor } from './core/interceptors/http-headers.interce
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthService } from './core/auth/auth.service';
 
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { LoginDialogComponent } from './shared/components/login-dialog/login-dialog.component';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    // Shared Components
+    LoginDialogComponent,
+    
   ],
   imports: [
+    // Angular
     BrowserModule,
-    AppRoutes,
     BrowserAnimationsModule,
-    // Módulos próprios
+    FormsModule,
+    // Angular Material
+    MatDialogModule,
+    MatButtonModule,
+    MatInputModule,
+    MatFormFieldModule,
+    // Próprios
+    AppRoutes,
     CoreModule,
     HomeModule,
   ],
